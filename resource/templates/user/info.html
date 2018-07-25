@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<title>用户信息</title>  
+	<meta charset="UTF-8"/>
+	<script type="text/javascript" th:src="@{/webjars/jquery/2.2.4/jquery.min.js}"></script>
+</head>
+<body>
+	<div>
+		<table>
+			<tr>
+				<td>id</td>
+				<td th:text="${userInfo.id}"></td>
+			</tr>
+			<tr>
+				<td>名称</td>
+				<td th:text="${userInfo.name}"></td>
+			</tr>
+			<tr>
+				<td>账户</td>
+				<td th:text="${userInfo.account}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

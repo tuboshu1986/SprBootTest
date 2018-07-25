@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<title>用户列表</title>  
+	<meta charset="UTF-8"/>
+	<script type="text/javascript" th:src="@{/plugin/jquery-1.8.2.min.js}"></script>
+</head>
+<body>
+	<div>
+		<table>
+			<thead>
+				<th></th>
+				<th>id</th>
+				<th>name</th>
+				<th>account</th>
+			</thead>
+			<tr th:each="userInfo:${userInfos}">
+				<td><img src="image/circle.png"/></td>
+				<td th:text="${userInfo.id}"></td>
+				<td th:text="${userInfo.name}"></td>
+				<td th:text="${userInfo.account}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
