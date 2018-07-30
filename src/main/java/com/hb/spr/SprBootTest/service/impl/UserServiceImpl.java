@@ -3,9 +3,11 @@ package com.hb.spr.SprBootTest.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hb.spr.SprBootTest.model.User;
+import com.hb.spr.SprBootTest.repository.UserRepository;
 import com.hb.spr.SprBootTest.service.UserService;
 
 @Service
@@ -32,6 +34,9 @@ public class UserServiceImpl implements UserService {
         u3.setName("吃吃吃");
         users.add(u3);
     }
+
+    @Autowired
+    private UserRepository userRepository;
     
     public User get(User user) {
         for (User u : users) {
@@ -46,6 +51,26 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> all() {
         return users;
+    }
+    
+    @Override
+    public User getById(String id){
+        return this.userRepository.getFirst1ById(id);
+    }
+    
+    @Override
+    public User getFirstByAccountAndPassword(String name, String password){
+    	return this.userRepository.getFirst1ByAccountAndPassword(name, password);
+    }
+
+    public UserRepository getUserRepository()
+    {
+        return userRepository;
+    }
+
+    public void setUserRepository(UserRepository userRepository)
+    {
+        this.userRepository = userRepository;
     }
 
 }

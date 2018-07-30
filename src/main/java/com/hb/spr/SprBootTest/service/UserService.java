@@ -7,4 +7,6 @@ import com.hb.spr.SprBootTest.model.User;
 public interface UserService {
     User get(User user);
     List<User> all();
+    User getById(String id);
+    User getFirstByAccountAndPassword(String name, String password);
 }

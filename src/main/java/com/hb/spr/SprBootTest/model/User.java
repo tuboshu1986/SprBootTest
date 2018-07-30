@@ -2,7 +2,16 @@ package com.hb.spr.SprBootTest.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="hb_user")
 public class User {
+    @Id
+    @GeneratedValue
     private String id;
     private String name;
     private String account;
@@ -11,7 +20,7 @@ public class User {
     private Integer sex;
     private String domain;
     private String email;
-    private String level;
+    private String userLevel;
     private String country;
     private Date birthdate;
     private String state;
@@ -85,14 +94,6 @@ public class User {
     {
         this.email = email;
     }
-    public String getLevel()
-    {
-        return level;
-    }
-    public void setLevel(String level)
-    {
-        this.level = level;
-    }
     public String getCountry()
     {
         return country;
@@ -156,6 +157,14 @@ public class User {
     public void setFlag(String flag)
     {
         this.flag = flag;
+    }
+    public String getUserLevel()
+    {
+        return userLevel;
+    }
+    public void setUserLevel(String userLevel)
+    {
+        this.userLevel = userLevel;
     }
     
 }
