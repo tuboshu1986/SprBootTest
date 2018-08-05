@@ -7,9 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.hb.spr.SprBootTest.define.HbBean;
+
 @Entity
 @Table(name="hb_user")
-public class User {
+public class User extends HbBean {
     @Id
     @GeneratedValue
     private String id;

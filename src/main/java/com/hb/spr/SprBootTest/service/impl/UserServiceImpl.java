@@ -37,7 +37,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
-    
+
+	@Override
     public User get(User user) {
         for (User u : users) {
             if(u.getId().equals(user.getId())) {
@@ -48,20 +49,25 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    @Override
+	@Override
     public List<User> all() {
         return users;
     }
-    
-    @Override
+
+	@Override
     public User getById(String id){
         return this.userRepository.getFirst1ById(id);
     }
-    
-    @Override
+
+	@Override
     public User getFirstByAccountAndPassword(String name, String password){
     	return this.userRepository.getFirst1ByAccountAndPassword(name, password);
     }
+
+	@Override
+	public List<User> query(User user) {
+		return this.userRepository.getByNameLike(user.getName());
+	}
 
     public UserRepository getUserRepository()
     {

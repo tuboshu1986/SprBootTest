@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<title>登陆</title>  
+	<meta charset="UTF-8"/>
+	<script type="text/javascript" th:src="@{/webjars/jquery/2.2.4/jquery.min.js}"></script>
+</head>
+<body>
+	<div>
+	<form th:action="${#httpServletRequest.getContextPath()}+'/security/login'" method="post">
+		<table>
+			<tr>
+				<td>名称</td>
+				<td>
+					<input name="username" type="text" th:value="${#httpServletRequest.getParameter('username')}"/>
+				</td>
+			</tr>
+			<tr>
+				<td>账户</td>
+				<td>
+					<input name="userpwd" type="password" th:value="${#httpServletRequest.getParameter('userpwd')}"/>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td style="color:red;" th:text="${loginMessage}"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td style="text-align:right;"><button>登陆</button></td>
+			</tr>
+		</table>
+	</form>
+	</div>
+</body>
+</html>

@@ -9,4 +9,5 @@ public interface UserService {
     List<User> all();
     User getById(String id);
     User getFirstByAccountAndPassword(String name, String password);
+    List<User> query(User user);
 }

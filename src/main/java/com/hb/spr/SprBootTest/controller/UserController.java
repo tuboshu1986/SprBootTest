@@ -11,43 +11,52 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hb.spr.SprBootTest.model.User;
 import com.hb.spr.SprBootTest.service.UserService;
+import com.hb.spr.SprBootTest.utils.BeanUtils;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    private static final Logger log = LoggerFactory.getLogger(UserController.class);
-    
-    @Autowired
-    private UserService userService;
+	private static final Logger log = LoggerFactory
+			.getLogger(UserController.class);
 
-    @RequestMapping("/all")
-    public String get(Model model){
-        model.addAttribute("userInfos", userService.all());
-        return "/user/list";
-    }
+	@Autowired
+	private UserService userService;
 
-    @RequestMapping("/get/{id}")
-    public String get(@PathVariable("id") String id, Model model){
-        User user = new User();
-        user.setId(id);
-        user = userService.get(user);
-        model.addAttribute("userInfo", user);
-        return "/user/info";
-    }
-    
-    @RequestMapping("/getByName/{name}")
-    @ResponseBody
-    public User getById(@PathVariable String id) {
-        log.info(">>>>id:" + id);
-        return this.userService.getById(id);
-    }
+	@RequestMapping("/list")
+	public String list(User user) {
 
-    public UserService getUserService() {
-        return userService;
-    }
+		return "/user/list";
+	}
 
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-    
+	@RequestMapping("/all")
+	public String get(Model model) {
+		model.addAttribute("userInfos", userService.all());
+		return "/user/list";
+	}
+
+	@RequestMapping("/get/{id}")
+	public String get(@PathVariable("id") String id, Model model) {
+		User user = new User();
+		log.info(">>>>" + BeanUtils.toString(user));
+		user.setId(id);
+		user = userService.get(user);
+		model.addAttribute("userInfo", user);
+		return "/user/info";
+	}
+
+	@RequestMapping("/getById/{id}")
+	@ResponseBody
+	public User getById(@PathVariable String id) {
+		log.info(">>>>id:" + id);
+		return this.userService.getById(id);
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
 }

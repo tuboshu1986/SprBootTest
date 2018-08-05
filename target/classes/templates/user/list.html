@@ -9,10 +9,26 @@
 	<div>
 		<table>
 			<thead>
-				<th></th>
-				<th>id</th>
-				<th>name</th>
-				<th>account</th>
+				<tr>
+					<th>
+						<input name="user.name"/>
+					</th>
+					<th>
+						<button>查询</button>
+					</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>id</th>
+					<th>name</th>
+					<th>account</th>
+				</tr>
 			</thead>
 			<tr th:each="userInfo:${userInfos}">
 				<td><img src="image/circle.png"/></td>
