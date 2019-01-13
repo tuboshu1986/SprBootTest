@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div>
-	<form th:action="${#httpServletRequest.getContextPath()}+'/security/login'" method="post">
+	<form name='f' th:action="${#httpServletRequest.getContextPath()}+'/login'" method="post">
 		<table>
 			<tr>
 				<td>名称</td>
@@ -18,7 +18,7 @@
 			<tr>
 				<td>账户</td>
 				<td>
-					<input name="userpwd" type="password" th:value="${#httpServletRequest.getParameter('userpwd')}"/>
+					<input name="password" type="password" th:value="${#httpServletRequest.getParameter('userpwd')}"/>
 				</td>
 			</tr>
 			<tr>

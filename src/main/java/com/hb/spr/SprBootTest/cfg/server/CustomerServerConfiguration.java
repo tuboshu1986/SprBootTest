@@ -6,9 +6,8 @@ import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class CustomerServerConfiguration implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> {
 
     private static final Logger log = LoggerFactory.getLogger(CustomerServerConfiguration.class);

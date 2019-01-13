@@ -22,9 +22,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@RequestMapping("listPage")
+	public String listPage(){
+		return "redirect:/user/list";
+	}
+	
 	@RequestMapping("/list")
-	public String list(User user) {
-
+	public String list(User user, Model model) {
+		model.addAttribute("userList", userService.all());
 		return "/user/list";
 	}
 
@@ -49,6 +54,13 @@ public class UserController {
 	public User getById(@PathVariable String id) {
 		log.info(">>>>id:" + id);
 		return this.userService.getById(id);
+	}
+	
+	@RequestMapping("/addUser")
+	public Object addUser(User user) throws Exception{
+		log.debug(">>>>新增操作>>" + user);
+		this.userService.add(user);
+		return "redirect:/user/list";
 	}
 
 	public UserService getUserService() {

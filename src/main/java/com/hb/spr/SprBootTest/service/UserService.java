@@ -10,4 +10,6 @@ public interface UserService {
     User getById(String id);
     User getFirstByAccountAndPassword(String name, String password);
     List<User> query(User user);
+    User findOneByName(String name);
+    void add(User user) throws Exception ;
 }

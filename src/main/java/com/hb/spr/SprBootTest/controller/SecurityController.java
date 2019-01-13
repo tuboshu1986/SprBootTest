@@ -2,6 +2,8 @@ package com.hb.spr.SprBootTest.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import com.hb.spr.SprBootTest.service.UserService;
 @RequestMapping("/security")
 public class SecurityController {
 
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	private UserService userService;
 
@@ -27,6 +30,7 @@ public class SecurityController {
 
 	@RequestMapping("/loginPage")
 	public String loginPage() {
+		logger.info(">>>>前往登录页面");
 		return "security/login";
 	}
 
@@ -62,6 +66,11 @@ public class SecurityController {
 		return "forward:/security/loginPage";
 	}
 
+	@RequestMapping("/exception")
+	public String exceptionTest() throws HbException{
+		throw new HbException("声明无效");
+	}
+	
 	public UserService getUserService() {
 		return userService;
 	}
